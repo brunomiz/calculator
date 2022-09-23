@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    triggers {
+        pollSCM('*/5 * * * *')
+    }
     stages {
         stage("Compile") {
             steps {
@@ -22,14 +25,14 @@ pipeline {
             }
         }
         stage("Static code analysis") {
-                    steps {
-                        sh "./mvnw checkstyle:checkstyle"
-                        publishHTML(target: [
-                            reportDir: 'target/site',
-                            reportFiles: 'checkstyle.html',
-                            reportName: "Checkstyle Report"
-                        ])
-                    }
-                }
+            steps {
+                sh "./mvnw checkstyle:checkstyle"
+                publishHTML(target: [
+                    reportDir: 'target/site',
+                    reportFiles: 'checkstyle.html',
+                    reportName: "Checkstyle Report"
+                ])
+            }
+        }
     }
 }
