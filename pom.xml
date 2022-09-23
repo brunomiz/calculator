@@ -15,6 +15,7 @@
     <description>calculator</description>
     <properties>
         <java.version>11</java.version>
+        <checkstyle.config.location>/config/checkstyle/checkstyle.xml</checkstyle.config.location>
     </properties>
     <dependencies>
         <dependency>
@@ -80,5 +81,15 @@
             </plugin>
         </plugins>
     </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.2.0</version>
+            </plugin>
+        </plugins>
+    </reporting>
 
 </project>
