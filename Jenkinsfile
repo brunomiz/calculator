@@ -34,5 +34,10 @@ pipeline {
                 ])
             }
         }
+        stage("Docker build") {
+            steps {
+                sh "./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=brunoauto1/calculator"
+            }
+        }
     }
 }
